@@ -1,0 +1,30 @@
+[project]
+name = "bprg"
+version = "0.1.0"
+description = "Bootstrap percolation in random graphs."
+readme = "README.md"
+authors = [
+    {name = "Jimin Lin", email = "jmlinx@icloud.com"}
+]
+requires-python = ">=3.14"
+dependencies = [
+    "flax>=0.12.8",
+    "jax>=0.11.0",
+]
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.1.1",
+    "mkdocstrings-python>=2.0.7",
+    "plotly>=6.9.0",
+    "ruff>=0.15.22",
+    "streamlit>=1.60.0",
+    "zensical>=0.0.57",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "bprg"
