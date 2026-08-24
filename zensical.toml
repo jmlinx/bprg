@@ -2,6 +2,7 @@
 site_name = "BPRG"
 site_description = "Bootstrap Percolation on Random Graphs"
 site_author = "Jimin Lin"
+site_url = "https://jmlinx.github.io/bprg/"
 copyright = "&copy; 2026 Jimin Lin"
 
 
