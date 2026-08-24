@@ -1,0 +1,57 @@
+[project]
+site_name = "BPRG"
+site_description = "Bootstrap Percolation on Random Graphs"
+site_author = "Jimin Lin"
+copyright = "&copy; 2026 Jimin Lin"
+
+
+repo_name = "bprg"
+repo_url = "https://github.com/jmlinx/bprg"
+
+docs_dir = "docs"
+
+nav = [
+    { "Home" = "index.md" },
+    { "Getting Started" = "getting-started.md" },
+    { "Examples" = "examples.md" },
+    { "API Reference" = [
+        { "Operator" = "api/operator.md" },
+        { "Simulation" = "api/simulation.md" },
+        { "Solver" = "api/solver.md" },
+        { "Preset" = "api/preset.md" },
+    ] },
+]
+
+extra_javascript = ["https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"]
+
+[project.theme]
+variant = "classic"
+
+[project.theme.icon]
+logo = "lucide/waypoints"
+repo = "fontawesome/brands/github"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+[project.plugins.mkdocstrings.handlers.python]
+paths = ["src"]
+
+[project.plugins.mkdocstrings.handlers.python.options]
+docstring_style = "google"
+show_source = true
+members_order = "source"
