@@ -16,18 +16,6 @@ INTEGRAL_NUM = 1000
 TYPE_DOMAIN = (0.0, 1.0)
 
 
-def _f(f: Function, x: VertexType) -> Array:
-    return f(x)
-
-
-def _κy(κ: Kernel, x: VertexType, y: VertexType) -> Array:
-    return κ(y[None, :], x[:, None])
-
-
-def _μ(μ: TypeMeasure, x: VertexType) -> Array:
-    return μ(x)
-
-
 def Λ(
     f: Function,
     x: VertexType,
@@ -240,42 +228,13 @@ def _Ψf(η_xk: Array, Πf_xk: Array) -> Array:
     return Ψf_x
 
 
-# if __name__ == "__main__":
-#     nx = 1001
-#     ny = 1001
-#     n = 1000
-#     S = (0.0, 1.0)
+def _f(f: Function, x: VertexType) -> Array:
+    return f(x)
 
-#     def η(x: VertexType) -> Array:
-#         return jnp.tile(jnp.array([0.1, 0.0, 0.9]), (len(x), 1))
 
-#     def κ(x: VertexType, y: VertexType) -> Array:
-#         return x + y
+def _κy(κ: Kernel, x: VertexType, y: VertexType) -> Array:
+    return κ(y[None, :], x[:, None])
 
-#     def μ(x: VertexType) -> Array:
-#         """Lebesgue measure."""
-#         Δμ = jnp.empty_like(x)
-#         Δμ = Δμ.at[0].set((x[1] - x[0]) / 2)
-#         Δμ = Δμ.at[-1].set((x[-1] - x[-2]) / 2)
-#         Δμ = Δμ.at[1:-1].set((x[2:] - x[:-2]) / 2)
-#         return Δμ
 
-#     def f(x: VertexType) -> Array:
-#         return x
-
-#     x = jnp.linspace(S[0], S[1], nx)
-#     ψf_x = Ψ(f, x, κ, μ, η, S, ny)
-
-#     f_x = f(x)
-
-#     def loss(x: VertexType) -> float:
-#         ψf_x = Ψ(f, x, κ, μ, η, S, ny)
-#         f_x = f(x)
-#         return jnp.mean((ψf_x - f_x) ** 2)
-
-#     y = jnp.linspace(S[0], S[1], 100)
-#     xx, yy = jnp.meshgrid(x, y, indexing="ij")
-#     κ(yy, xx)
-#     κ(y[None, :], x[:, None])  # shape (len(x), len(y))
-
-#     jnp.all(κ(yy, xx) == κ(y[None, :], x[:, None]))
+def _μ(μ: TypeMeasure, x: VertexType) -> Array:
+    return μ(x)

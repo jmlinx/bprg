@@ -122,32 +122,3 @@ nn_config_dict = {
     "Exponential": {"layers": 2, "nodes": 20, "epochs": 500},
     "Singular": {"layers": 2, "nodes": 32, "epochs": 1000},
 }
-
-if __name__ == "__main__":
-    import plotly.graph_objects as go
-
-    from bprg.solver import FixpointSolver, NeuralNetwork
-
-    κ_lips = preset_lips.κ
-    κ_expo = preset_expo.κ
-    κ_sing = preset_sing.κ
-    ns = preset_sing.ns
-
-    fnn = NeuralNetwork()
-    solver = FixpointSolver(fnn=fnn, κ=κ_sing, μ=μ_lebe, η=η_const, S=S_ε, nx=ns, ny=ns)
-    result = solver.solve()
-    f = result["f"]
-    ψf = result["Ψf"]
-    x = jnp.linspace(S_ε[0], S_ε[1], ns)
-
-    go.Figure(
-        data=[
-            go.Scatter(x=x, y=f(x), mode="lines", name="f(x)"),
-            go.Scatter(x=x, y=ψf(x), mode="lines", name="Ψ(f)(x)"),
-        ],
-        layout=go.Layout(
-            title="Neural Network Approximation of f and Ψ(f)",
-            xaxis_title="x",
-            yaxis_title="Function values",
-        ),
-    ).show()
