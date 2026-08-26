@@ -1,5 +1,7 @@
 # BPRG: Bootstrap Percolation on Random Graphs
 
+https://github.com/user-attachments/assets/99ba0cee-6c88-4e8d-b9ad-d01964981a2a
+
 `BPRG` is a high performance python library for analyzing **bootstrap percolation in random graphs**. It implements the theoretical framework in [Detering and Lin (2026): Bootstrap percolation in random graphs of unbounded rank](https://doi.org/10.1017/apr.2026.10072), providing comprehensive tools to study contagion dynamics in random graphs.
 
 ---
