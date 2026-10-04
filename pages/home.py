@@ -260,8 +260,31 @@ plot_graph()
 
 st.markdown("""
 `BPRG` is a high-performance Python library for analyzing **bootstrap percolation in random graphs**. It implements the theoretical framework in [Detering and Lin (2026), Bootstrap percolation in random graphs of unbounded rank](https://doi.org/10.1017/apr.2026.10072), and provides a comprehensive set of tools for studying contagion dynamics in random graphs.
+""")
+
+
+st.markdown(r"""
+## What is bootstrap percolation?
+
+Bootstrap percolation describes how an **infection, activation, or cascade spreads through a network**. Each vertex is assigned a threshold that specifies how many of its neighbors must be infected before it becomes infected itself. The process starts with a set of initially infected vertices. As soon as an uninfected vertex has at least as many infected neighbors as its threshold, it also becomes infected. This may trigger further infections, and the process continues until no additional vertices can become infected. The main quantity of interest is the **final fraction of infected vertices** and how it depends on the structure of the network, the vertex types, and their thresholds.
+
+## Explore the theory and finite-network behavior
+
+This interactive webpage illustrates the main results of our work on bootstrap percolation in inhomogeneous random graphs. In the model, each vertex has a **type** and a **threshold**, and connections between vertices of types $x$ and $y$ are determined by a user-specified kernel $\kappa(x,y)$. Starting from an initially infected set, a vertex becomes infected once sufficiently many of its neighbors are infected. Our theoretical results determine, for large networks, the final fraction of infected vertices through the least fixed point $\hat f$ of a nonlinear operator,
+
+$$
+\hat f = \Psi_\kappa[\hat f],
+$$
+
+where $\hat f(x)$ describes the asymptotic infection level for vertices of type $x$. On this webpage, you can specify the kernel and use our **neural-network-based solver** to approximate this fixed point and obtain the theoretical large-network prediction. You can then compare this prediction with the outcome for a **finite network of size $n$**. For this finite-$n$ calculation, vertex types and thresholds are first sampled from their prescribed distribution; the resulting bootstrap percolation process is then evaluated using the efficient matrix-based implementation developed for the numerical analysis. In this way, the webpage provides a direct visual comparison between the **asymptotic theory** and the behavior of finite random networks, and allows you to explore how this comparison changes with the kernel, the network size, and the model parameters.
+
+The webpage also serves as an interactive illustration of **`BPRG`**, our high-performance Python library implementing these methods for analyzing bootstrap percolation in random graphs.
 
 ## References
+
+`BPRG` implements the theoretical framework in [Detering and Lin (2026), *Bootstrap Percolation in Random Graphs of Unbounded Rank*](https://doi.org/10.1017/apr.2026.10072).
+
+
 ```
 @article{detering2026bootstrap,
   title={Bootstrap Percolation in Random Graphs of Unbounded Rank},
