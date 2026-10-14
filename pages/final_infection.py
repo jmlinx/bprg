@@ -321,6 +321,7 @@ with st.expander("Estimate final fraction of infected vertices", expanded=True):
             x=mc_s, y=fmc_s, mode="markers", name="f<sub>MC</sub>(s)", line={"color": color_fmc}, opacity=0.7
         )
         fig_f.add_trace(scatter_g)
+        fig_f.update_layout(xaxis_title="Vertex type", yaxis_title="Infection fraction")
 
     plot_per_iter = st.slider("Update plot per _ iterations", min_value=1, max_value=100, value=50, step=1)
 
@@ -333,10 +334,10 @@ with st.expander("Estimate final fraction of infected vertices", expanded=True):
 
     def string_fval(nn_val, mc_val):
         return (
-            "Estimated final infected fraction: &nbsp;&nbsp;&nbsp;&nbsp;"
-            + string_fval_nn(nn_val)
-            + ",&nbsp;&nbsp;&nbsp;&nbsp;"
-            + string_fval_mc(mc_val)
+            f"Final infected fraction. &nbsp;"
+            f"Estimated: {string_fval_nn(nn_val)}"
+            f" &nbsp; "
+            f"Realized: {string_fval_mc(mc_val)}"
         )
 
     # Result display
